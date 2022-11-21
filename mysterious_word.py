@@ -3,7 +3,7 @@ import json
 
 
 def get_word_random():
-    word_request = requests.get("https://api.dicionario-aberto.net/random")
+    word_request = requests.get('https://api.dicionario-aberto.net/random')
     word_random = json.loads(word_request.content)
     return word_random["word"]
 
@@ -25,6 +25,10 @@ class MysteriousWord:
                 exit()
 
             get_letter = input(f'\nDigite uma letra: ').lower()
+
+            if len(get_letter) > 1:
+                print('Digite apenas uma letra...')
+                continue
 
             if get_letter.isalpha():
                 if get_letter in self.letters_digit:
